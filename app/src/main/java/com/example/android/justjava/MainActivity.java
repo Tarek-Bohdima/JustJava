@@ -17,11 +17,24 @@ import java.text.NumberFormat;
  */
 public class MainActivity extends AppCompatActivity {
     int quantity = 2;
+    static final String QUANTITY = "quantity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+    }
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        quantity = savedInstanceState.getInt(QUANTITY);
+        displayQuantity(quantity);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putInt(QUANTITY, quantity);
     }
 
     /**
